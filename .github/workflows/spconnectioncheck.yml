@@ -1,24 +1,25 @@
-name: Check Azure Connection
+name: Azure Login with OIDC
 
 on:
-  workflow_dispatch:   # Manually run workflow from Actions tab
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
-  check-connection:
-    runs-on: self-hosted
+  login-azure:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Login to Azure
-        uses: azure/login@v1
+      - name: Azure Login
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        
-      - name: Verify Subscription
-        run: az account show
 
-      - name: List Resource Groups
-        run: az group list -o table
+      - name: Show Azure account
+        run: az account show
