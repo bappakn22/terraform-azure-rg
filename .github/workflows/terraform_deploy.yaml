@@ -11,6 +11,11 @@ on:
 jobs:
   terraform_deploy:
     runs-on: bappa
+    
+    defaults:
+      run:
+        shell: bash
+    
     steps:
       # Step 1: Repo checkout
       - name: Checkout repository
