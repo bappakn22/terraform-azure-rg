@@ -6,6 +6,8 @@ on:
       - main
       - 'features/*'
 
+
+
 jobs:
   terraform_deploy:
     runs-on: bappa
@@ -20,12 +22,9 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Step 3: Setup Terraform
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.8.5
-
+      - name: HashiCorp - Setup Terraform
+        uses: hashicorp/setup-terraform@v2.0.3
+                      
 
       # Step 5: Terraform Init
       - name: Terraform Init
