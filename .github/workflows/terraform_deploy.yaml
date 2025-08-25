@@ -26,9 +26,6 @@ jobs:
         with:
           terraform_version: 1.8.5
 
-      # Step 4: Clean Terraform folder to avoid CLI auth conflicts
-      - name: Clean Terraform cache
-        run: rm -rf .terraform
 
       # Step 5: Terraform Init
       - name: Terraform Init
