@@ -8,7 +8,7 @@ on:
 
 jobs:
   terraform_deploy:
-    runs-on: self-hosted
+    runs-on: bappa
     steps:
       # Step 1: Repo checkout
       - name: Checkout repository
